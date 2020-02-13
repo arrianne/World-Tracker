@@ -49,7 +49,19 @@ class ViewController: UIViewController {
     }
 
     @IBAction func reset(_ sender: Any) {
-        
+        // Every time we press reset, first we have to pause the session
+        self.restartSession()
+    }
+    
+    func restartSession(){
+        self.sceneView.session.pause()
+        self.sceneView.scene.rootNode.enumerateChildNodes { (node, _) in
+            // by removing the box from the parent node, we are removing it from the scene view
+            node.removeFromParentNode()
+        }
+        // Restarting the scene view but forgetting the original origin and creating a new one
+        self.sceneView.session.run(configuration, options:
+            [.resetTracking, .removeExistingAnchors])
     }
 
 }
