@@ -10,10 +10,11 @@ import UIKit
 import ARKit
 
 class ViewController: UIViewController {
+    
     @IBOutlet weak var sceneView: ARSCNView!
     
     
-    //this is used to track the positio and orientation of device relative to the real world
+    //this is used to track the position and orientation of device relative to the real world
     //
     let configuration = ARWorldTrackingConfiguration()
     override func viewDidLoad() {
@@ -26,6 +27,17 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func add(_ sender: Any) {
+        // A node is a position in space
+        let node = SCNNode()
+        
+        // Let's give our node a shape
+        node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+        // The rootnode is our origin location in our scene
+        // by making our node a child of that it will always stay relative
+        self.sceneView.scene.rootNode.addChildNode(node)
     }
 
 
