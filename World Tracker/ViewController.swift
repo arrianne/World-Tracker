@@ -10,7 +10,7 @@ import UIKit
 import ARKit
 
 class ViewController: UIViewController {
-    
+   
     @IBOutlet weak var sceneView: ARSCNView!
     
     
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         
         // Let's give our node an exact position in relation to our starting origin
         // This is based on x,y and z axis
-        node.position = SCNVector3(0,0,0)
+        node.position = SCNVector3(0,0,-0.3)
         
         // first material defines the surface of the node, diffuse defines the colour
         node.geometry?.firstMaterial?.diffuse.contents = UIColor.systemPink
@@ -48,7 +48,9 @@ class ViewController: UIViewController {
         self.sceneView.scene.rootNode.addChildNode(node)
     }
 
-
+    @IBAction func reset(_ sender: Any) {
+        
+    }
 
 }
 
