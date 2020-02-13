@@ -35,6 +35,14 @@ class ViewController: UIViewController {
         
         // Let's give our node a shape
         node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+        
+        // Let's give our node an exact position in relation to our starting origin
+        // This is based on x,y and z axis
+        node.position = SCNVector3(0,0,0)
+        
+        // first material defines the surface of the node, diffuse defines the colour
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.systemPink
+        
         // The rootnode is our origin location in our scene
         // by making our node a child of that it will always stay relative
         self.sceneView.scene.rootNode.addChildNode(node)
