@@ -36,8 +36,18 @@ class ViewController: UIViewController {
         // A node is a position in space
         let node = SCNNode()
         
-        // Let's give our node a shape
-        node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+        // Let's give our node a shape - this is a cube
+//        node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+        
+        
+        // Freestyle shape
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: 0.2))
+        path.addLine(to: CGPoint(x: 0.2, y: 0.3))
+        let shape = SCNShape(path: path, extrusionDepth: 0.2)
+        node.geometry = shape
+        
         
         // Providing the range of positions for the box
         let x = randomNumbers(firstNum: -0.3, secondNum: 0.3)
@@ -78,7 +88,7 @@ class ViewController: UIViewController {
     
     // Returns a random value within the range that you give it
     func randomNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat {
-        return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
+     return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
     }
 
 }
