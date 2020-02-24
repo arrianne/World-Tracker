@@ -39,9 +39,15 @@ class ViewController: UIViewController {
         // Let's give our node a shape
         node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
         
+        // Providing the range of positions for the box
+        let x = randomNumbers(firstNum: -0.3, secondNum: 0.3)
+        let y = randomNumbers(firstNum: -0.3, secondNum: 0.3)
+        let z = randomNumbers(firstNum: -0.6, secondNum: -0.4)
+        
+
         // Let's give our node an exact position in relation to our starting origin
         // This is based on x,y and z axis
-        node.position = SCNVector3(0,0,-0.3)
+        node.position = SCNVector3(x,y,z)
         
         // Specular is light that is reflected off a surface (needs a light source though)
         node.geometry?.firstMaterial?.specular.contents = UIColor.white
@@ -68,6 +74,11 @@ class ViewController: UIViewController {
         // Restarting the scene view but forgetting the original origin and creating a new one
         self.sceneView.session.run(configuration, options:
             [.resetTracking, .removeExistingAnchors])
+    }
+    
+    // Returns a random value within the range that you give it
+    func randomNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
     }
 
 }
