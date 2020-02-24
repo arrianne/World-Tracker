@@ -22,6 +22,9 @@ class ViewController: UIViewController {
         self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         self.sceneView.session.run(configuration)
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Adding an omnidirectional light source on the scene view
+        self.sceneView.autoenablesDefaultLighting = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +42,9 @@ class ViewController: UIViewController {
         // Let's give our node an exact position in relation to our starting origin
         // This is based on x,y and z axis
         node.position = SCNVector3(0,0,-0.3)
+        
+        // Specular is light that is reflected off a surface (needs a light source though)
+        node.geometry?.firstMaterial?.specular.contents = UIColor.white
         
         // first material defines the surface of the node, diffuse defines the colour
         node.geometry?.firstMaterial?.diffuse.contents = UIColor.systemPink

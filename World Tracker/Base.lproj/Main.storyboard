@@ -18,9 +18,13 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGz-FH-njx">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arscnView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cl-7y-5eH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cl-7y-5eH">
                                 <rect key="frame" x="20" y="752" width="80" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="6fz-84-2dj"/>
+                                    <constraint firstAttribute="width" constant="80" id="7se-8y-Q5U"/>
+                                </constraints>
                                 <state key="normal" title="Add">
                                     <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -29,7 +33,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6A-ZM-db4">
-                                <rect key="frame" x="314" y="752" width="80" height="80"/>
+                                <rect key="frame" x="313" y="752" width="81" height="80"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="R7U-aF-kN6"/>
@@ -45,6 +49,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b6A-ZM-db4" secondAttribute="trailing" constant="20" id="G6u-jG-UD3"/>
                             <constraint firstItem="3cl-7y-5eH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="Ikk-9Q-8lI"/>
                             <constraint firstItem="qGz-FH-njx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JHr-8V-p9a"/>
                             <constraint firstItem="b6A-ZM-db4" firstAttribute="leading" secondItem="3cl-7y-5eH" secondAttribute="trailing" constant="213" id="NC6-aj-xgU"/>
@@ -53,8 +58,8 @@
                             <constraint firstAttribute="bottom" secondItem="qGz-FH-njx" secondAttribute="bottom" id="bjl-bw-MD6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3cl-7y-5eH" secondAttribute="bottom" constant="30" id="cUz-bg-Nb6"/>
                             <constraint firstItem="qGz-FH-njx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jmM-ih-RBy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b6A-ZM-db4" secondAttribute="bottom" constant="20" id="nIu-lo-bWV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b6A-ZM-db4" secondAttribute="bottom" constant="20" id="nwg-ZV-Y6e"/>
-                            <constraint firstItem="b6A-ZM-db4" firstAttribute="leading" secondItem="3cl-7y-5eH" secondAttribute="trailing" constant="20" id="qYW-cf-vE3"/>
                             <constraint firstItem="qGz-FH-njx" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rra-TJ-bJe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
