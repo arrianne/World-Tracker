@@ -35,8 +35,8 @@ class ViewController: UIViewController {
     @IBAction func add(_ sender: Any) {
        
         // creating a cyclinder shape
-        let cylinderNode = SCNNode(geometry: SCNCylinder(radius: 0.05, height:0.05))
-        cylinderNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+        let boxNode = SCNNode(geometry: SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0 ))
+        boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         
         // A node is a position in space
         let node = SCNNode()
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         //position based on origin
         node.position = SCNVector3(0.2, 0.1, -0.2)
         
-        cylinderNode.position = SCNVector3(-0.3, 0.2, -0.3)
+        boxNode.position = SCNVector3(0, -0.05, 0)
         
 
         // Specular is light that is reflected off a surface (needs a light source though)
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         // The rootnode is our origin location in our scene
         // by making our node a child of that it will always stay relative
         self.sceneView.scene.rootNode.addChildNode(node)
-        node.addChildNode(cylinderNode)
+        node.addChildNode(boxNode)
     }
 
     @IBAction func reset(_ sender: Any) {
