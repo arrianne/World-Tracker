@@ -33,6 +33,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func add(_ sender: Any) {
+       
+        // creating a cyclinder shape
+        let cylinderNode = SCNNode(geometry: SCNCylinder(radius: 0.05, height:0.05))
+        cylinderNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+        
         // A node is a position in space
         let node = SCNNode()
         
@@ -41,24 +46,30 @@ class ViewController: UIViewController {
         
         
         // Freestyle shape
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: 0, y: 0.2))
-        path.addLine(to: CGPoint(x: 0.2, y: 0.3))
-        let shape = SCNShape(path: path, extrusionDepth: 0.2)
-        node.geometry = shape
+//        let path = UIBezierPath()
+//        path.move(to: CGPoint(x: 0, y: 0))
+//        path.addLine(to: CGPoint(x: 0, y: 0.2))
+//        path.addLine(to: CGPoint(x: 0.2, y: 0.3))
+//        let shape = SCNShape(path: path, extrusionDepth: 0.2)
+//        node.geometry = shape
         
-        
+        node.geometry = SCNPyramid(width: 0.1, height: 0.1, length: 0.1)
         // Providing the range of positions for the box
-        let x = randomNumbers(firstNum: -0.3, secondNum: 0.3)
-        let y = randomNumbers(firstNum: -0.3, secondNum: 0.3)
-        let z = randomNumbers(firstNum: -0.6, secondNum: -0.4)
+//        let x = randomNumbers(firstNum: -0.3, secondNum: 0.3)
+//        let y = randomNumbers(firstNum: -0.3, secondNum: 0.3)
+//        let z = randomNumbers(firstNum: -0.6, secondNum: -0.4)
         
 
         // Let's give our node an exact position in relation to our starting origin
-        // This is based on x,y and z axis
-        node.position = SCNVector3(x,y,z)
+        // This is based on x,y and z axis above
+//        node.position = SCNVector3(x,y,z)
         
+        //position based on origin
+        node.position = SCNVector3(0.2, 0.1, -0.2)
+        
+        cylinderNode.position = SCNVector3(-0.3, 0.2, -0.3)
+        
+
         // Specular is light that is reflected off a surface (needs a light source though)
         node.geometry?.firstMaterial?.specular.contents = UIColor.white
         
@@ -68,6 +79,7 @@ class ViewController: UIViewController {
         // The rootnode is our origin location in our scene
         // by making our node a child of that it will always stay relative
         self.sceneView.scene.rootNode.addChildNode(node)
+        node.addChildNode(cylinderNode)
     }
 
     @IBAction func reset(_ sender: Any) {
