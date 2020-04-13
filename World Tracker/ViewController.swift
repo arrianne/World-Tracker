@@ -56,6 +56,8 @@ class ViewController: UIViewController {
 //        node.geometry = shape
         
         node.geometry = SCNPyramid(width: 0.1, height: 0.1, length: 0.1)
+        
+        node.eulerAngles = SCNVector3(Float(180.degreesToRadians), 0, 0)
         // Providing the range of positions for the box
 //        let x = randomNumbers(firstNum: -0.3, secondNum: 0.3)
 //        let y = randomNumbers(firstNum: -0.3, secondNum: 0.3)
@@ -109,5 +111,9 @@ class ViewController: UIViewController {
      return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
     }
 
+}
+
+extension Int {
+    var degreesToRadians: Double { return Double(self) * .pi/180 }
 }
 
