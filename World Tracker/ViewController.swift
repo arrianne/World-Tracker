@@ -34,16 +34,18 @@ class ViewController: UIViewController {
     
     @IBAction func add(_ sender: Any) {
        
-        // creating a cyclinder shape
+        // Creating the door
+        let doorNode = SCNNode(geometry: SCNPlane(width: 0.03, height: 0.06))
+        doorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+        
+        // creating a box shape
         let boxNode = SCNNode(geometry: SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0 ))
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         
         // A node is a position in space
         let node = SCNNode()
         
-        // Let's give our node a shape - this is a cube
-//        node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
-        
+      
         
         // Freestyle shape
 //        let path = UIBezierPath()
@@ -67,7 +69,10 @@ class ViewController: UIViewController {
         //position based on origin
         node.position = SCNVector3(0.2, 0.1, -0.2)
         
+        // position from parent node
         boxNode.position = SCNVector3(0, -0.05, 0)
+        
+        doorNode.position = SCNVector3(0, -0.02, 0.053)
         
 
         // Specular is light that is reflected off a surface (needs a light source though)
@@ -80,6 +85,7 @@ class ViewController: UIViewController {
         // by making our node a child of that it will always stay relative
         self.sceneView.scene.rootNode.addChildNode(node)
         node.addChildNode(boxNode)
+        boxNode.addChildNode(doorNode)
     }
 
     @IBAction func reset(_ sender: Any) {
